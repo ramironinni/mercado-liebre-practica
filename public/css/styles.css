@@ -1,0 +1,200 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+header {
+    padding: 20px;
+}
+
+#logo {
+    width: 44%;
+    padding-right: 5px;
+}
+
+.barra-busqueda-container {
+    width: 45%;
+}
+
+.barra-busqueda {
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    width: 100%;
+    height: fit-content;
+}
+
+.lupa-icon {
+    background-color: white;
+    line-height: 28px;
+    border-radius: 5px;
+    position: relative;
+    left: -10px;
+}
+
+#boton-menu {
+    width: 40px;
+    background-color: #0044aa;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#boton-menu:hover {
+    background-color: #0022aa;
+    cursor: pointer;
+}
+
+.nav-bar {
+    display: none;
+}
+
+#banner {
+    width: 100%;
+    display: block;
+}
+
+h1 {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+section > h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+.article-container {
+    width: 100%;
+    background-color: #fff;
+}
+
+article {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fff;
+    width: 100%;
+}
+
+h3 + article {
+    margin-top: 0;
+}
+
+.image-product {
+    width: 100%;
+}
+
+.article-text-container {
+    border-top: 1px solid #ebebeb;
+}
+
+.truck-icon {
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #39b54a;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+    transition: transform 1s;
+}
+
+.article-container:hover .truck-icon {
+    transform: rotate(360deg);
+}
+
+footer {
+    padding: 0 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    width: 100%;
+}
+
+footer > article {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.login-form,
+.register-form {
+    margin: 5%;
+}
+
+.login-form > input,
+.login-form > button,
+.register-form > input,
+.register-form > button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.login-form > button,
+.register-form > .register-submit {
+    color: #fff;
+    background-color: #0044aa;
+}
+
+.login-form > button:hover,
+.register-form > .register-submit:hover {
+    background-color: #002244;
+}
+
+.register-reset {
+    color: #fff;
+    background-color: #aa0044;
+}
+
+.register-reset:hover {
+    background-color: #cc1155;
+}
+
+.link a {
+    text-decoration: none;
+    color: black;
+}
+
+.link {
+    list-style-type: none;
+}
+
+p {
+    font-size: 12px;
+}
+
+.headline {
+    font-size: 24px;
+}
+
+.discount .description {
+    font-size: 16px;
+}
+
+.price {
+    font-size: 18px;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.text-align-center {
+    text-align: center;
+}

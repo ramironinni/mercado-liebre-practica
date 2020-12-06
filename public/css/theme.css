@@ -1,0 +1,47 @@
+.text-primary {
+    color: #03264C;
+}
+
+.text-secondary{
+    color: #1259c3;
+}
+
+.text-success{
+    color: #39b54a;
+}
+
+.text-warning{
+    color:#EAC926;
+}
+
+.text-dark {
+    color: #666;
+}
+
+.text-muted{
+    color: #ebebeb;
+}
+
+.bg-primary {
+    background-color: #03264C;
+}
+
+.bg-secondary{
+    background-color: #1259c3;
+}
+
+.bg.success{
+    background-color: #39b54a;
+}
+
+.bg-warning{
+    background-color:#EAC926;
+}
+
+.bg-dark {
+    background-color: #666;
+}
+
+.bg-muted{
+    background-color: #ebebeb;
+}
