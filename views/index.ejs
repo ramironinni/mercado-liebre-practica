@@ -18,83 +18,13 @@
             <h1>Hola <%= user ? user.name : "amigo" %></h1>
             <section class="display-flex section-md">
                 <h3 class="headline">Basado en tu última visita</h3>
-                <% products.forEach(product => { if (product.category ==
-                "in-sale") { %>
-                <div class="article-container">
-                    <a href="/products/<%= product.id %>" class="anchor">
-                        <div class="image-container">
-                            <img
-                                src="/images/products/<%= product.image %>"
-                                width="320"
-                                alt="<%= product.name %>"
-                                class="image-product"
-                            />
-                        </div>
-                        <div class="article-text-container position-relative">
-                            <i
-                                class="fas fa-truck display-block text-success truck-icon"
-                            ></i>
-                            <% if (product.discount > 0) { %>
-                            <p class="original-price display-inline-block">
-                                &#36;<%= toThousand(product.price) %>
-                            </p>
-                            <p class="price-with-discount display-inline-block">
-                                &#36;<%= toThousand(product.price -
-                                (product.discount * product.price /100)) %>
-                            </p>
-                            <p class="discount text-success">
-                                <%= product.discount %>&#37; off
-                            </p>
-                            <% } else { %>
-                            <p class="price">
-                                &#36;<%= toThousand(product.price) %>
-                            </p>
-                            <% } %>
-                            <h4 class="description"><%= product.name %></h4>
-                        </div>
-                    </a>
-                </div>
-                <% } }); %>
+                <% productsInSale.forEach((product)=>{%> <%-
+                include("products/product-card", {product: product}) %> <%}) %>
             </section>
             <section class="display-flex">
                 <h3 class="headline">Ofertas</h3>
-                <% products.forEach(product => { if (product.category ==
-                "visited") { %>
-                <div class="article-container">
-                    <article>
-                        <div class="image-container">
-                            <img
-                                src="/images/products/<%= product.image %>"
-                                width="320"
-                                alt="<%= product.name %>"
-                                class="image-product"
-                            />
-                        </div>
-                        <div class="article-text-container position-relative">
-                            <i
-                                class="fas fa-truck display-block text-success truck-icon"
-                            ></i>
-                            <% if (product.discount > 0) { %>
-                            <p class="original-price display-inline-block">
-                                &#36;<%= toThousand(product.price) %>
-                            </p>
-                            <p class="price-with-discount display-inline-block">
-                                &#36;<%= toThousand(product.price -
-                                (product.discount * product.price /100)) %>
-                            </p>
-                            <p class="discount text-success">
-                                <%= product.discount %>&#37; off
-                            </p>
-                            <% } else { %>
-                            <p class="price">
-                                &#36;<%= toThousand(product.price) %>
-                            </p>
-                            <% } %>
-                            <h4 class="description">Macbook Pro 2019</h4>
-                        </div>
-                    </article>
-                </div>
-                <% } }); %>
+                <% productsVisited.forEach((product)=>{%> <%-
+                include("products/product-card", {product: product}) %> <%}) %>
             </section>
         </main>
         <footer class="footer-md"><%- include("./partials/footer") %></footer>

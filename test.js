@@ -1,9 +1,9 @@
-const user = null;
+const getFromDB = require("./utils/getFromDB");
 
-let mensaje;
+const products = getFromDB("productsDataBase");
 
-if (!user) {
-    mensaje = "Anda null?";
-}
+const productsInSale = products.filter((product) => {
+    return product.category == "in-sale";
+});
 
-console.log(mensaje);
+console.log(productsInSale);

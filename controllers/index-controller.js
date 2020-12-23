@@ -1,10 +1,20 @@
-const getProducts = require("../utils/getProducts");
+const getFromDB = require("../utils/getFromDB");
 
 const indexController = {
     show: (req, res) => {
-        const products = getProducts();
+        const products = getFromDB("productsDataBase");
+
+        const productsInSale = products.filter((product) => {
+            return product.category == "in-sale";
+        });
+
+        const productsVisited = products.filter((product) => {
+            return product.category == "visited";
+        });
+
         res.render("index", {
-            products: products,
+            productsInSale: productsInSale,
+            productsVisited: productsVisited,
         });
     },
     pruebaSession: (req, res) => {

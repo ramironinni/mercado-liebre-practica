@@ -1,17 +1,30 @@
-<article class="product padding-15 margin-y-10">
-    <a href="/products/<%= product.category %>/<%= product.id %>/details">
-        <div class="background-light">
-            <img class="width-100" src="/images/<%= product.image %>" alt="Cafetera">
-            <div class="details flex p-relative info-container padding-20 flex-align-center">
-                <i id="truck-icon" class="fas fa-truck color-secondary background-light"></i>
-                <p class="price font-size-4 color-dark">$
-                    <%= toThousand(product.price - (product.price*(product.discount/100))) %>
-                </p>
-                <% if (product.discount > 0) { %>
-                <p class="discount font-size-3 color-secondary"><%= product.discount %>%</p>
-                <% } %>
-                <h4 class="description font-size-2 color-muted width-100"><%= product.name %></h4>
-            </div>
+<div class="article-container">
+    <a href="/products/<%= product.id %>" class="anchor">
+        <div class="image-container">
+            <img
+                src="/images/products/<%= product.image %>"
+                width="320"
+                alt="<%= product.name %>"
+                class="image-product"
+            />
+        </div>
+        <div class="article-text-container position-relative">
+            <i class="fas fa-truck display-block text-success truck-icon"></i>
+            <% if (product.discount > 0) { %>
+            <p class="original-price display-inline-block">
+                &#36;<%= toThousand(product.price) %>
+            </p>
+            <p class="price-with-discount display-inline-block">
+                &#36;<%= toThousand(product.price - (product.discount *
+                product.price /100)) %>
+            </p>
+            <p class="discount text-success">
+                <%= product.discount %>&#37; off
+            </p>
+            <% } else { %>
+            <p class="price">&#36;<%= toThousand(product.price) %></p>
+            <% } %>
+            <h4 class="description"><%= product.name %></h4>
         </div>
     </a>
-</article>
+</div>
