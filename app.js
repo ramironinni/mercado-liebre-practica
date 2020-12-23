@@ -6,6 +6,8 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 
 const recordameMiddleware = require("./middlewares/recordameMiddleware");
+const toThousand = require("./utils/toThousand");
+const authenticate = require("./middlewares/auth/authenticate");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
@@ -21,16 +23,19 @@ app.listen(3000, () => {
     console.log("Servidor funcionando");
 });
 
-/// APPLY VIEWS VARIABLES ANDS FUNCTIONS
+/// APPLY VIEWS VARIABLES AND FUNCTIONS
+app.locals.toThousand = toThousand;
+app.locals.user = null;
 
 // MIDDLEWARES
 app.use(express.static(path.resolve(__dirname, "public")));
 
-app.use(express.urlencoded());
-app.use(methodOverride("_method"));
 app.use(session({ secret: "Secreto" }));
 app.use(cookieParser());
+app.use(express.urlencoded());
+app.use(methodOverride("_method"));
 app.use(recordameMiddleware);
+app.use(authenticate);
 
 /// ROUTES
 

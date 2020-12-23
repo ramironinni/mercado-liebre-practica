@@ -36,6 +36,7 @@
         <li><a href="#">Ayuda</a></li>
     </ul>
     <ul class="link nav-bar-list">
+        <% if (!user) { %>
         <li>
             <a href="/auth/register"
                 >Creá tu cuenta <i class="far fa-id-card"></i
@@ -44,8 +45,10 @@
         <li>
             <a href="/auth/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
         </li>
+        <% } else {%>
         <li>
             <a href="#">Mis compras <i class="fas fa-shopping-basket"></i></a>
         </li>
+        <% } %>
     </ul>
 </nav>

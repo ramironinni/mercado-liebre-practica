@@ -1,7 +1,9 @@
-let url = "/create";
+const user = null;
 
-let urlToArray = url.split("/");
+let mensaje;
 
-let lastElement = urlToArray[urlToArray.length - 1];
+if (!user) {
+    mensaje = "Anda null?";
+}
 
-console.log(lastElement);
+console.log(mensaje);

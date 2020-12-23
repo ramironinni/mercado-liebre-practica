@@ -1,13 +1,10 @@
 const getProducts = require("../utils/getProducts");
-const toThousand = require("../utils/toThousand");
 
 const indexController = {
     show: (req, res) => {
         const products = getProducts();
         res.render("index", {
             products: products,
-            toThousand,
-            user: req.loggedUser,
         });
     },
     pruebaSession: (req, res) => {

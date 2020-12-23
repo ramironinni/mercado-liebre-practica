@@ -20,18 +20,19 @@ const authController = {
 
         req.session.loggedUserId = user.id;
 
-        let motiveToLogin = req.cookies.motiveToLogin;
+        return res.redirect("/");
 
-        switch (motiveToLogin) {
-            case "create":
-                return res.redirect("/products/create");
-            case "edit":
-                return res.redirect("/products/:id/edit");
-            case "":
-                return res.redirect("/");
-            default:
-                return res.redirect("/");
-        }
+        // let motiveToLogin = req.cookies.motiveToLogin;
+
+        // switch (motiveToLogin) {
+        //     case "create":
+        //         return res.redirect("/products/create");
+        //     case "edit":
+        //         return res.redirect("/products/:id/edit");
+        //     case "":
+        //         return res.redirect("/");
+        //     default:
+        // }
     },
     register: (req, res) => {
         const users = getFromDB("usersDB");
@@ -51,29 +52,31 @@ const authController = {
         res.redirect("/auth/login");
     },
     showLogin: (req, res) => {
-        let redirect;
-
-        if (req.query.redirect) {
-            redirect = req.query.redirect;
-            res.cookie("motiveToLogin", redirect, { maxAge: 10000 });
-        }
-
-        let message;
-
-        switch (redirect) {
-            case "create":
-                message = "Debe ser administrador para crear un producto";
-                break;
-            case "edit":
-                message = "Debe ser administrador para editar un producto";
-                break;
-
-            default:
-                message = "";
-                break;
-        }
-
+        let message = "";
         res.render("login", { message: message });
+
+        // let redirect;
+
+        // if (req.query.redirect) {
+        //     redirect = req.query.redirect;
+        //     res.cookie("motiveToLogin", redirect, { maxAge: 10000 });
+        // }
+
+        // let message;
+
+        // switch (redirect) {
+        //     case "create":
+        //         message = "Debe ser administrador para crear un producto";
+        //         break;
+        //     case "edit":
+        //         message = "Debe ser administrador para editar un producto";
+        //         break;
+
+        //     default:
+        //         message = "";
+        //         break;
+        // }
+        // res.render("login", { message: message });
     },
     showRegister: (req, res) => {
         res.render("register");

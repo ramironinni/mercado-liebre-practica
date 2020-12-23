@@ -17,15 +17,25 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-const authenticate = require("../middlewares/auth/authenticate");
-const assertAdmin = require("../middlewares/auth/assertAdmin");
+const assertIsAdmin = require("../middlewares/auth/assert-is-admin");
+const assertSignedIn = require("../middlewares/auth/assert-signed-in");
 
 router.get("/", productController.getAll);
 router.post("/", upload.any(), productController.create);
 
-router.get("/create", authenticate, assertAdmin, productController.showCreate);
+router.get(
+    "/create",
+    assertSignedIn,
+    assertIsAdmin,
+    productController.showCreate
+);
 router.get("/:id", productController.getOne);
-router.get("/:id/edit", authenticate, assertAdmin, productController.showEdit);
+router.get(
+    "/:id/edit",
+    assertSignedIn,
+    assertIsAdmin,
+    productController.showEdit
+);
 router.put("/:id", upload.any(), productController.edit);
 router.delete("/:id/delete", productController.delete);
 

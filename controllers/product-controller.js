@@ -1,5 +1,4 @@
 const getProducts = require("../utils/getProducts");
-const toThousand = require("../utils/toThousand");
 
 const getFromDB = require("../utils/getFromDB");
 const saveInDB = require("../utils/saveInDB");
@@ -22,7 +21,6 @@ const productController = {
 
         res.render("products/detail", {
             product: requiredProduct,
-            toThousand,
         });
     },
     getAll: (req, res) => {
@@ -30,7 +28,6 @@ const productController = {
 
         res.render("index", {
             products,
-            toThousand,
         });
     },
     showCreate: (req, res) => {

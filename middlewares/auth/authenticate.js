@@ -16,7 +16,7 @@ function authenticate(req, res, next) {
         return next();
     }
 
-    req.loggedUser = loggedUser;
+    res.locals.user = loggedUser;
 
     next();
 }
