@@ -1,21 +1,39 @@
+//REQUIRE
 const express = require("express");
-const app = express();
 const path = require("path");
+const methodOverride = require("method-override");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
-app.use(express.static(path.resolve(__dirname, "public")));
+const recordameMiddleware = require("./middlewares/recordameMiddleware");
 
-app.listen(3001, () => {
+const indexRouter = require("./routes/index");
+const authRouter = require("./routes/auth");
+const productRouter = require("./routes/product");
+
+// APP CONFIG
+const app = express();
+
+// VIEW ENGINE CONFIG
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.listen(3000, () => {
     console.log("Servidor funcionando");
 });
 
-app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views/index.html"));
-});
+/// APPLY VIEWS VARIABLES ANDS FUNCTIONS
 
-app.get("/register", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views/register.html"));
-});
+// MIDDLEWARES
+app.use(express.static(path.resolve(__dirname, "public")));
 
-app.get("/login", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "views/login.html"));
-});
+app.use(express.urlencoded());
+app.use(methodOverride("_method"));
+app.use(session({ secret: "Secreto" }));
+app.use(cookieParser());
+app.use(recordameMiddleware);
+
+/// ROUTES
+
+app.use("/", indexRouter);
+app.use("/auth", authRouter);
+app.use("/products", productRouter);

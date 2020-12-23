@@ -1,3 +1,19 @@
 .article-container {
-    width: 25%;
+    width: 23%;
+}
+
+.main-lg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-detail-container-lg {
+    display: flex;
+    width: 80%;
+}
+
+#logo {
+    width: 30%;
 }

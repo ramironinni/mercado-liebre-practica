@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include("../partials/head", {title: "Bienvenidos a Mercado Liebre"})
+        %>
+    </head>
+    <body class="bg-muted">
+        <header class="bg-warning"><%- include("../partials/header") %></header>
+        <main class="main-lg">
+            <h1 class="product-detail-title text-dark">
+                Detalle del producto: <%= product.name %>
+            </h1>
+            <div
+                class="product-detail-container product-detail-container-md product-detail-container-lg"
+            >
+                <div class="container-left-lg">
+                    <div class="product-detail-info-container">
+                        <div class="product-detail-image-container">
+                            <img
+                                class="product-detail-image"
+                                src="/images/products/<%= product.image %> "
+                                alt=""
+                            />
+                        </div>
+                        <p class="product-detail-description">
+                            <%= product.description %>
+                        </p>
+                    </div>
+                </div>
+                <div class="container-right-md">
+                    <h2 class="product-detail-name"><%= product.name %></h2>
+                    <% if( product.discount > 0){ %>
+                    <p
+                        class="product-detail-original-price text-success display-inline-block"
+                    >
+                        &#36;<%= toThousand(product.price) %>
+                    </p>
+                    <p
+                        class="product-detail-discount text-success display-inline-block"
+                    >
+                        <%= product.discount %>&#37; off
+                    </p>
+                    <p class="product-detail-price-with-discount">
+                        &#36;<%= toThousand(product.price - (product.discount *
+                        product.price /100)) %>
+                    </p>
+                    <% } else { %>
+                    <p
+                        class="product-detail-price-no-discount display-inline-block"
+                    >
+                        &#36;<%= toThousand(product.price) %>
+                    </p>
+                    <% }%>
+                    <div class="product-detail-purchase-container display-flex">
+                        <div class="display-flex">
+                            <i class="fas fa-credit-card text-success"></i>
+                            <p class="text-dark font-size-1-1">
+                                Pagá en 12 cuotas sin interés
+                            </p>
+                        </div>
+                        <div class="display-flex">
+                            <i class="fas fa-store text-success"></i>
+                            <p class="text-dark font-size-1-1">
+                                Retiro gratis en locales del vendedor
+                            </p>
+                        </div>
+                        <div class="width-100">
+                            <form
+                                class="product-detail-purchase-form display-flex justify-content-center"
+                                action="#"
+                            >
+                                <button type="submit" class="cursor-pointer">
+                                    COMPRAR AHORA
+                                </button>
+                            </form>
+                            <div class="edit-delete-container-md">
+                                <form
+                                    class="product-detail-edit-delete-form display-flex justify-content-center"
+                                    action="/products/<%= product.id %>/edit"
+                                    method="GET"
+                                >
+                                    <button
+                                        class="button-edit cursor-pointer"
+                                        type="submit"
+                                    >
+                                        MODIFICAR
+                                    </button>
+                                </form>
+                                <form
+                                    class="product-detail-edit-delete-form display-flex justify-content-center"
+                                    action="/products/<%= product.id %>/delete?_method=DELETE"
+                                    method="POST"
+                                >
+                                    <button
+                                        class="button-delete cursor-pointer"
+                                        type="submit"
+                                    >
+                                        BORRAR
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer-md"><%- include("../partials/footer") %></footer>
+    </body>
+</html>

@@ -35,7 +35,13 @@
 }
 
 .article-container {
-    width: 50%;
+    width: 47%;
+}
+
+.article-container:hover {
+    -webkit-box-shadow: 5px 5px 28px -9px rgba(0, 0, 0, 0.79);
+    -moz-box-shadow: 5px 5px 28px -9px rgba(0, 0, 0, 0.79);
+    box-shadow: 5px 5px 28px -9px rgba(0, 0, 0, 0.79);
 }
 
 .footer-md {
@@ -44,4 +50,17 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.product-detail-container-md {
+    display: flex;
+}
+
+.edit-delete-container-md {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-detail-edit-delete-form {
+    width: 48%;
 }

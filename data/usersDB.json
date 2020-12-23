@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "name": "Ramiro Ninni",
+        "username": "ram123",
+        "email": "ramironinni@gmail.com",
+        "birthday": "1988-09-30",
+        "address": "cordoba 123",
+        "password": "$2b$10$X88UXqGfplNFgJaxLpeCNeCuqFsSwPhKAh6y9Bnc2bqzegz5DqWJ6",
+        "avatar": "avatar-1608494953181.jpg",
+        "admin": true
+    },
+    {
+        "id": 2,
+        "name": "Simon",
+        "username": "simon123",
+        "email": "simon@gmail.com",
+        "birthday": "20010-08-20",
+        "address": "cordoba 123",
+        "password": "$2b$10$X88UXqGfplNFgJaxLpeCNeCuqFsSwPhKAh6y9Bnc2bqzegz5DqWJ6",
+        "avatar": "avatar-1608494953181.jpg",
+        "admin": false
+    }
+]

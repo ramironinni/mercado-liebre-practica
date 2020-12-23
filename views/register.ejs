@@ -1,102 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
-        />
-        <link rel="stylesheet" href="/css/base.css" />
-        <link rel="stylesheet" href="/css/theme.css" />
-        <link rel="stylesheet" href="/css/styles.css" />
-        <link
-            rel="stylesheet"
-            href="/css/styles-md.css"
-            media="(min-width:  768px)"
-        />
-        <link
-            rel="stylesheet"
-            href="/css/styles-lg.css"
-            media="(min-width:  992px)"
-        />
-        <link rel="stylesheet" href="/css/forms.css" />
-        <title>Registarse</title>
+        <%- include("./partials/head", {title: "Registrate"}) %>
     </head>
     <body class="bg-muted">
-        <header class="bg-warning">
-            <div class="header-top">
-                <div
-                    class="display-flex justify-content-center align-items-center padding-10 logo-barra-md"
-                >
-                    <img
-                        src="/images/logo-mercado-liebre.svg"
-                        alt="Logo de MercadoLiebre"
-                        id="logo"
-                    />
-                    <div
-                        class="display-flex flex-direction-row barra-busqueda-container flex-wrap-nowrap"
-                    >
-                        <input
-                            class="barra-busqueda"
-                            type="text"
-                            placeholder="Buscá productos, marcas"
-                        />
-                        <i
-                            class="fas fa-search display-block lupa-icon text-dark"
-                        ></i>
-                    </div>
-                </div>
-                <div
-                    class="display-flex justify-content-center align-items-center"
-                >
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <p>Comprá en cuotas y sin tarjeta de crédito</p>
-                </div>
-            </div>
-            <div class="text-align-center" id="boton-menu-container">
-                <i class="fas fa-bars" id="boton-menu"></i>
-            </div>
-            <nav class="nav-bar nav-bar-md">
-                <ul class="link nav-bar-list">
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Tiendas Oficiales</a></li>
-                    <li><a href="#">Vender</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                </ul>
-                <ul class="link nav-bar-list">
-                    <li>
-                        <a href="/register"
-                            >Creá tu cuenta <i class="far fa-id-card"></i
-                        ></a>
-                    </li>
-                    <li>
-                        <a href="/login"
-                            >Ingresá <i class="fas fa-sign-in-alt"></i
-                        ></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            >Mis compras <i class="fas fa-shopping-basket"></i
-                        ></a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <header class="bg-warning"><%- include("./partials/header") %></header>
         <main>
             <h1>Registro</h1>
-            <form action="/" method="GET" class="register-form">
+            <form
+                action="/auth/register"
+                method="POST"
+                class="register-form"
+                enctype="multipart/form-data"
+            >
                 <label for="nombre-y-apellido" class="display-none"
                     >Nombre y apellido</label
                 >
                 <input
                     type="text"
                     id="nombre-y-apellido"
-                    name="nombre-y-apellido"
+                    name="name"
                     placeholder="Nombre y apellido"
                     class="display-block"
                 />
@@ -106,7 +29,7 @@
                 <input
                     type="text"
                     id="usuario"
-                    name="usuario"
+                    name="username"
                     placeholder="Nombre de usuario"
                     class="display-block"
                 />
@@ -124,14 +47,14 @@
                 <input
                     type="date"
                     id="nacimiento"
-                    name="nacimiento"
+                    name="birthday"
                     class="display-block"
                 />
                 <label for="domicilio" class="display-none">Domicilio</label>
                 <input
                     type="text"
                     id="domicilio"
-                    name="domicilio"
+                    name="address"
                     placeholder="Domicilio"
                     class="display-block"
                 />
@@ -194,7 +117,7 @@
                 </div>
 
                 <h2>Elegí tu foto de usuario</h2>
-                <input type="file" />
+                <input type="file" name="avatar" />
                 <br />
                 <label for="password" class="display-none"
                     >Elegí tu contraseña</label
@@ -212,7 +135,7 @@
                 <input
                     type="text"
                     id="password"
-                    name="password"
+                    name="passwordCheck"
                     placeholder="Confirma tu contraseña"
                     class="display-block"
                 />
@@ -221,35 +144,6 @@
                 <button type="reset" class="register-reset">Borrar</button>
             </form>
         </main>
-        <footer class="footer-md">
-            <article>
-                <i class="far fa-credit-card text-secondary"></i>
-                <h4>Pagá con tarjeta o en efectivo</h4>
-                <p>
-                    Con MercadoLiebreCash tenés cuotas sin interés con tarjeta o
-                    efectivoen puntos de pago. ¡Y siempre es seguro!
-                </p>
-            </article>
-            <article>
-                <i class="fas fa-gift text-secondary"></i>
-                <h4>Envío gratis desde los $ 2.500</h4>
-                <p>
-                    Solo por estar registrad@ en MercadoLiebre tenés envíos
-                    gratis en miles de productos. Es un beneficio de
-                    MercadoPuntos.
-                </p>
-            </article>
-            <article>
-                <i class="fas fa-gift text-secondary"></i>
-                <h4>Seguridad de principio a fin</h4>
-                <p>
-                    ¿No te gusta? ¡Devolvelo! En MercadoLiebre no hay nada que
-                    no puedas hacer porque estás siempre prtegid@.
-                </p>
-            </article>
-            <div>
-                <p>Copyright © 1999-2019 MercadoLiebre S.R.L.</p>
-            </div>
-        </footer>
+        <footer class="footer-md"><%- include("./partials/footer") %></footer>
     </body>
 </html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include("../partials/head", {title: "Bienvenidos a Mercado Liebre"})
+        %>
+    </head>
+    <body class="bg-muted">
+        <header class="bg-warning"><%- include("../partials/header") %></header>
+        <main>
+            <h1>Estás editando: <%= product.name %></h1>
+            <div class="display-flex justify-content-flex-start">
+                <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <input class="display-none" type="number" value="<%= product.id %>" name="id">
+                    </div>
+
+                    <div>
+                        <label for="create-product-name"
+                            >Nombre del producto:</label
+                        >
+                        <input
+                            type="text"
+                            id="create-product-name"
+                            name="name"
+                            value="<%= product.name %>"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="create-product-description"
+                            >Descripción:</label
+                        >
+                        <textarea
+                            name="description"
+                            id="create-product-description"
+                            cols="30"
+                            rows="10"
+                        ><%= product.description %></textarea>
+                    </div>
+
+                    <div>
+                        <label for="create-product-price"
+                            >Precio del producto:</label
+                        >
+                        <input
+                            type="text"
+                            id="create-product-price"
+                            name="price"
+                            value="<%= product.price %>"
+                        />
+                    </div>
+
+                    <div>
+                        <label for="create-product-discount">Descuento:</label>
+                        <input type="text" id="create-product-discount" name="discount" value="<%= product.discount %>"/>
+                    </div>
+
+                   
+
+                    <div>
+                        <label for="create-product-category">Categoría:</label>
+                        <select id="create-product-category" name="category">
+                            <option value="">Elegir</option>
+                            <option value="in-sale" <%= product.category == "in-sale" ? "selected" : "" %> name="category">
+                                En oferta
+                            </option>
+                            <option value="visited"  <%= product.category == "visited" ? "selected" : "" %>name="category">
+                                Últimos agregados
+                            </option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="file" name="image" id="" />
+                        <p>Imagen actual <%= product.image %></p>
+                        <img src="/images/products/<%= product.image %>" alt="">
+                        <input type="text" value="<%= product.image %>" class="display-none" name="oldImage">
+                    </div>
+
+
+                    <button type="submit">Editar producto</button>
+                </form>
+                <form action="/products/<%= product.id %>" method="GET">
+                    <button type="submit">Cancelar</button>
+                </form>
+            </div>
+        </main>
+        <footer class="footer-md"><%- include("../partials/footer") %></footer>
+    </body>
+</html>
