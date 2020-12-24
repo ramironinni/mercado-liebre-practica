@@ -1,15 +1,15 @@
-const getProducts = require("../utils/getProducts");
-
 const getFromDB = require("../utils/getFromDB");
 const saveInDB = require("../utils/saveInDB");
+const editInDB = require("../utils/editInDB");
 const getLastId = require("../utils/getLastId");
 
 const fs = require("fs");
 const path = require("path");
+const deleteFromDB = require("../utils/deleteFromDB");
 
 const productController = {
     getOne: (req, res) => {
-        const products = getProducts();
+        const products = getFromDB("productsDataBase");
         const requiredProduct = products.find((prod) => {
             return prod.id == req.params.id;
         });
@@ -24,7 +24,7 @@ const productController = {
         });
     },
     getAll: (req, res) => {
-        const products = getProducts();
+        const products = getFromDB("productsDataBase");
 
         res.render("index", {
             products,
@@ -34,7 +34,7 @@ const productController = {
         res.render("products/create");
     },
     showEdit: (req, res) => {
-        const products = getProducts();
+        const products = getFromDB("productsDataBase");
         const requiredProduct = products.find((prod) => {
             return prod.id == req.params.id;
         });
@@ -48,8 +48,10 @@ const productController = {
         });
     },
     create: (req, res, next) => {
-        const productsList = getProducts();
-        const newProductId = productsList[productsList.length - 1].id + 1;
+        const productsList = getFromDB("productsDataBase");
+
+        const newProductId = getLastId(productsList);
+
         const newProduct = {
             id: Number(newProductId),
             name: req.body.name,
@@ -59,15 +61,13 @@ const productController = {
             image: req.files[0].filename,
             category: req.body.category,
         };
-        productsList.push(newProduct);
-        fs.writeFileSync(
-            path.join(__dirname, "../data/productsDataBase.json"),
-            JSON.stringify(productsList, null, 4)
-        );
+
+        saveInDB(productsList, newProduct, "productsDataBase");
+
         res.redirect("products/" + newProductId);
     },
     edit: (req, res) => {
-        const productsList = getProducts();
+        const productsList = getFromDB("productsDataBase");
 
         const selectedProduct = productsList.find((product) => {
             return product.id == req.body.id;
@@ -88,33 +88,24 @@ const productController = {
             category: req.body.category,
         };
 
-        productsList.splice(
-            productsList.indexOf(selectedProduct),
-            1,
-            editedProduct
+        editInDB(
+            productsList,
+            selectedProduct,
+            editedProduct,
+            "productsDataBase"
         );
 
-        fs.writeFileSync(
-            path.join(__dirname, "../data/productsDataBase.json"),
-            JSON.stringify(productsList, null, 4)
-        );
         res.redirect("/products/" + editedProduct.id);
     },
+    showDelete: (req, res) => {
+        res.render("delete-confirmation");
+    },
     delete: (req, res) => {
-        const productsList = getProducts();
-
-        const selectedProduct = productsList.find((product) => {
-            return product.id == req.body.id;
-        });
-
-        productsList.splice(productsList.indexOf(selectedProduct), 1);
-
-        fs.writeFileSync(
-            path.join(__dirname, "../data/productsDataBase.json"),
-            JSON.stringify(productsList, null, 4)
+        const { message, successfulDelete } = deleteFromDB(
+            req.body.id,
+            "productsDataBase"
         );
 
-        const message = "El producto con ha sido borrado.";
         res.send(message);
     },
 };

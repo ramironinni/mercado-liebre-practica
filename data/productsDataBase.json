@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "name": "Cafetera Moulinex Dolce Gusto",
+        "name": "Cafetera Moulinex Dolce Gusto, MUY BUENA",
         "description": "Cafetera Dolce Gusto Lumio. La cafetera Dolce Gusto Lumio es de variedad automática que ha llegado con un diseño radical al que nos tenía acostumbrados Dolce Gusto.En este post te contamos todo lo que necesitas saber sobre ella, desde sus características técnicas hasta la calidad de las cápsulas o price.",
-        "price": 13000,
+        "price": 12000,
         "discount": 50,
-        "image": "image-1607719038466.jpg",
+        "image": "img-cafetera-moulinex.jpg",
         "category": "in-sale"
     },
     {
@@ -51,15 +51,6 @@
         "price": 20999,
         "discount": 12,
         "image": "img-aire-acondicionado.jpg",
-        "category": "in-sale"
-    },
-    {
-        "id": 7,
-        "name": "Notebook Lenovo I3 Intel 8gb Ram",
-        "description": "PROCESADOR / CHIPSET. CPU: Intel Core i3(8a generación) 8130U / 2.2 GHz. Velocidad turbo máxima: 3, 4 GHz. Numero de núcleos: Doble núcleo. Cache: 4 MB. Arquitectura de 64 bit: ss. MEMORIA CACHÉ. Tamaño instalada: 4 MB. ALMACENAMIENTO. Interfaz Serial ATA - 600",
-        "price": 36700,
-        "discount": 5,
-        "image": "img-laptop-lenovo.jpg",
         "category": "in-sale"
     },
     {
@@ -142,14 +133,5 @@
         "discount": 0,
         "image": "img-parlante-sony.jpg",
         "category": "visited"
-    },
-    {
-        "id": 17,
-        "name": "Kindle Paperwhite",
-        "description": "Amazon 5W USB Official OEM Charger and Power Adapter for Fire Tablets and Kindle eReaders - Black",
-        "price": 20000,
-        "discount": 50,
-        "image": null,
-        "category": "in-sale"
     }
 ]

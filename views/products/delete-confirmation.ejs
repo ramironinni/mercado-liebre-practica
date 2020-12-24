@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include("../partials/head", {title: "Bienvenidos a Mercado Liebre"})
+        %>
+    </head>
+    <body class="bg-muted">
+        <header class="bg-warning"><%- include("../partials/header") %></header>
+        <main>
+            <h1>¿Estás seguro que querés borrar el producto?</h1>
+            <form action="" method="POST">
+                <button type="submit">Sí</button>
+            </form>
+            <form action="/" method="GET">
+                <button type="submit">No</button>
+            </form>
+        </main>
+        <footer class="footer-md"><%- include("../partials/footer") %></footer>
+    </body>
+</html>

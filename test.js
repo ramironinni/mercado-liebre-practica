@@ -1,9 +1,36 @@
 const getFromDB = require("./utils/getFromDB");
+const fs = require("fs");
+const path = require("path");
 
-const products = getFromDB("productsDataBase");
+const deleteFromDB = function (id, filenameDB) {
+    const elements = getFromDB(filenameDB);
 
-const productsInSale = products.filter((product) => {
-    return product.category == "in-sale";
-});
+    const element = elements.find((element) => {
+        return element.id == id;
+    });
 
-console.log(productsInSale);
+    return console.log(element);
+    // let infoDelete;
+
+    // if (!element) {
+    //     return (infoDelete = {
+    //         successfulDelete: false,
+    //         message:
+    //             "No se encontró el id del producto indicado en la base de datos",
+    //     });
+    // }
+
+    elements.splice(elements.indexOf(element), 1);
+
+    fs.writeFileSync(
+        path.join(__dirname, `../data/${filenameDB}.json`),
+        JSON.stringify(elements, null, 4)
+    );
+
+    // return (infoDelete = {
+    //     successfulDelete: true,
+    //     message: "El producto fue borrado exitosamente de la base de datos",
+    // });
+};
+
+deleteFromDB(18, "productsDataBase");

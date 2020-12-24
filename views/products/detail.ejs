@@ -91,6 +91,12 @@
                                     action="/products/<%= product.id %>/delete?_method=DELETE"
                                     method="POST"
                                 >
+                                    <input
+                                        type="number"
+                                        name="id"
+                                        value="<%= product.id %>"
+                                        hidden
+                                    />
                                     <button
                                         class="button-delete cursor-pointer"
                                         type="submit"
