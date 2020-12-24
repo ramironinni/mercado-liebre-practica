@@ -4,14 +4,20 @@ const path = require("path");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
+const fs = require("fs");
 
-const recordameMiddleware = require("./middlewares/recordameMiddleware");
 const toThousand = require("./utils/toThousand");
+const recordameMiddleware = require("./middlewares/recordameMiddleware");
 const authenticate = require("./middlewares/auth/authenticate");
 
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, "logs.txt"), {
+    flags: "a",
+});
 
 // APP CONFIG
 const app = express();
@@ -28,6 +34,7 @@ app.locals.toThousand = toThousand;
 app.locals.user = null;
 
 // MIDDLEWARES
+app.use(morgan("tiny", { stream: accessLogStream }));
 app.use(express.static(path.resolve(__dirname, "public")));
 
 app.use(session({ secret: "Secreto" }));
