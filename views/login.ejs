@@ -7,31 +7,23 @@
         <header class="bg-warning"><%- include("./partials/header") %></header>
         <main>
             <h1>Iniciar Sesión</h1>
-            <%= message %> <% if (typeof errors != "undefined") { %>
-            <p>ERRORES</p>
-            <ul>
-                <% for (error of errors) {%>
-                <li><%= error.msg %></li>
-                <% } %>
-            </ul>
-            <% } %>
+
             <form action="/auth/login" method="POST" class="login-form">
                 <label for="usuario" class="display-none">Usuario</label>
-                <input
-                    type="text"
-                    id="usuario"
-                    name="username"
-                    placeholder="Usuario"
-                    class="display-block"
-                />
+                <% if(typeof errorsUsername != "undefined") {
+                errorsUsername.forEach(error => { %>
+                <p><%= error.msg %></p>
+                <% });%> <% } %> <input type="text" id="usuario" name="username"
+                placeholder="Usuario" class="display-block <%= (typeof
+                errorsUsername != "undefined") ? "input-error" : "" %>" />
                 <label for="password" class="display-none">Contraseña</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Contraseña"
-                    class="display-block"
-                />
+                <% if(typeof errorsPassword != "undefined") {
+                errorsPassword.forEach(error => { %>
+                <p><%= error.msg %></p>
+                <% });%> <% } %> <input type="password" id="password"
+                name="password" placeholder="Contraseña" class="display-block
+                <%= (typeof errorsPassword != "undefined") ? "input-error" : ""
+                %>" />
                 <label for="">Recordame</label>
                 <input type="checkbox" name="recordame" id="" />
                 <button type="submit">Enviar</button>

@@ -2,9 +2,27 @@ const getFromDB = require("../utils/getFromDB");
 const saveInDB = require("../utils/saveInDB");
 const getLastId = require("../utils/getLastId");
 const bcrypt = require("bcrypt");
+const { validationResult } = require("express-validator");
 
 const authController = {
     login: (req, res) => {
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            const errorsUsername = errors.errors.filter(
+                (error) => error.param == "username"
+            );
+
+            const errorsPassword = errors.errors.filter(
+                (error) => error.param == "password"
+            );
+
+            return res.render("login", {
+                errorsUsername,
+                errorsPassword,
+            });
+        }
+
         const users = getFromDB("usersDB");
 
         const user = users.find((user) => {
@@ -15,7 +33,7 @@ const authController = {
         });
 
         if (!user) {
-            return res.redirect("/auth/login");
+            return res.redirect("/auth/login?message=invalidlogin");
         }
 
         req.session.loggedUserId = user.id;

@@ -1,4 +1,4 @@
-const getFromDB = require("./utils/getFromDB");
+const getFromDB = require("./getFromDB");
 
 const getOneFromDB = function (id, filenameDB) {
     const elements = getFromDB(filenameDB);
@@ -8,4 +8,4 @@ const getOneFromDB = function (id, filenameDB) {
     return element;
 };
 
-console.log(getOneFromDB(3, "productsDataBase"));
+module.exports = getOneFromDB;

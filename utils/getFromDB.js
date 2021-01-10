@@ -1,6 +1,11 @@
 const fs = require("fs");
 const path = require("path");
 
+/**
+ *
+ * @param {string} filenameDB
+ */
+
 const getFromDB = function (filenameDB) {
     const elementsJSON = fs.readFileSync(
         path.join(__dirname, `../data/${filenameDB}.json`),

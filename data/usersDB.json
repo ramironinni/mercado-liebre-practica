@@ -2,7 +2,7 @@
     {
         "id": 1,
         "name": "Ramiro Ninni",
-        "username": "ram123",
+        "username": "ram123@gmail.com",
         "email": "ramironinni@gmail.com",
         "birthday": "1988-09-30",
         "address": "cordoba 123",
@@ -20,5 +20,17 @@
         "password": "$2b$10$X88UXqGfplNFgJaxLpeCNeCuqFsSwPhKAh6y9Bnc2bqzegz5DqWJ6",
         "avatar": "avatar-1608494953181.jpg",
         "admin": false
+    },
+    {
+        "id": 3,
+        "name": "John Wick",
+        "username": "johnwick",
+        "email": "john.wick@gmail.com",
+        "birthday": "1987-05-12",
+        "address": "45th Park Ave",
+        "perfil": "si",
+        "intereses": ["electro", "hogar"],
+        "password": "$2b$10$rflAsD5qQtI/xi5wspI1peHwUnakXugi/G8cORVcDe4QFngCltaPO",
+        "avatar": "avatar-1609875169918.jpeg"
     }
 ]

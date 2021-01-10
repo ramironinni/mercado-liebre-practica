@@ -2,6 +2,7 @@ const getFromDB = require("../utils/getFromDB");
 const saveInDB = require("../utils/saveInDB");
 const editInDB = require("../utils/editInDB");
 const getLastId = require("../utils/getLastId");
+const getOneFromDB = require("../utils/getOneFromDB");
 
 const fs = require("fs");
 const path = require("path");
@@ -9,10 +10,8 @@ const deleteFromDB = require("../utils/deleteFromDB");
 
 const productController = {
     getOne: (req, res) => {
-        const products = getFromDB("productsDataBase");
-        const requiredProduct = products.find((prod) => {
-            return prod.id == req.params.id;
-        });
+        const requiredProduct = getOneFromDB(req.params.id, "productsDataBase");
+
         if (requiredProduct == null) {
             return res
                 .status(404)

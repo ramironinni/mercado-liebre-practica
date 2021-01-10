@@ -12,7 +12,7 @@
         "id": 2,
         "name": "Macbook Pro 2019",
         "description": "Macbook Pro 2019 Mpxq2ll/a Intel Core i5 2.3 Ghz 8gb RAM 128gb SSD Pantalla 13.3\" Retina Apple Nueva Original. Importada de USA. Se entrega con la factura de compra para contar con la garantía del fabricante",
-        "price": 99999,
+        "price": 89000,
         "discount": 3,
         "image": "img-macbook-pro-2019.jpg",
         "category": "in-sale"
@@ -30,7 +30,7 @@
         "id": 4,
         "name": "Heladera no frost Whirlpool WRM45A",
         "description": "Disfrutá de la frescura de tus alimentos y almacenalos de manera práctica y cómoda en tu heladera Whirlpool, la protagonista de tu cocina. Su sistema no frost evita la generación de escarcha y te permitirá conservar el sabor y las propiedades nutritivas de los productos.A su vez, su freezer cuenta con una capacidad de 86 litros, que facilitará la distribución y el orden de tus congelados para que no te preocupes por la falta de espacio.",
-        "price": 47900,
+        "price": 54000,
         "discount": 10,
         "image": "img-heladera-whirpool.jpg",
         "category": "in-sale"
@@ -51,6 +51,15 @@
         "price": 20999,
         "discount": 12,
         "image": "img-aire-acondicionado.jpg",
+        "category": "in-sale"
+    },
+    {
+        "id": 7,
+        "name": "Notebook Lenovo I3 Intel 8gb Ram",
+        "description": "PROCESADOR / CHIPSET. CPU: Intel Core i3(8a generación) 8130U / 2.2 GHz. Velocidad turbo máxima: 3, 4 GHz. Numero de núcleos: Doble núcleo. Cache: 4 MB. Arquitectura de 64 bit: ss. MEMORIA CACHÉ. Tamaño instalada: 4 MB. ALMACENAMIENTO. Interfaz Serial ATA - 600",
+        "price": 45000,
+        "discount": 5,
+        "image": "img-laptop-lenovo.jpg",
         "category": "in-sale"
     },
     {
@@ -133,5 +142,23 @@
         "discount": 0,
         "image": "img-parlante-sony.jpg",
         "category": "visited"
+    },
+    {
+        "id": 17,
+        "name": "Cool product",
+        "price": "12000",
+        "discount": "",
+        "image": "0f85cd8a5da6591d0076d4da85cccbad",
+        "category": "visited",
+        "description": "Gatito muy lindo"
+    },
+    {
+        "id": 4,
+        "name": "Heladera no frost Whirlpool WRM45A",
+        "description": "Disfrutá de la frescura de tus alimentos y almacenalos de manera práctica y cómoda en tu heladera Whirlpool, la protagonista de tu cocina. Su sistema no frost evita la generación de escarcha y te permitirá conservar el sabor y las propiedades nutritivas de los productos.A su vez, su freezer cuenta con una capacidad de 86 litros, que facilitará la distribución y el orden de tus congelados para que no te preocupes por la falta de espacio.",
+        "price": 12000,
+        "discount": 10,
+        "image": "img-heladera-whirpool.jpg",
+        "category": "in-sale"
     }
 ]
