@@ -2,8 +2,6 @@ const fs = require("fs");
 const path = require("path");
 
 function recordameMiddleware(req, res, next) {
-    next();
-
     if (
         req.cookies.recordame != undefined &&
         req.session.usuarioLogueado == undefined
@@ -29,6 +27,7 @@ function recordameMiddleware(req, res, next) {
 
         req.session.usuarioLogueado = usuarioALoguearse;
     }
+    next();
 }
 
 module.exports = recordameMiddleware;

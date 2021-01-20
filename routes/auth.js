@@ -34,6 +34,7 @@ router.post(
     ],
     authController.login
 );
+router.delete("/login", authController.logOut);
 
 router.get("/register", authController.showRegister);
 router.post("/register", upload.single("avatar"), authController.register);

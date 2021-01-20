@@ -9,7 +9,7 @@ const morgan = require("morgan");
 
 // REQUIRE UTILS, MIDDLEWARES AND ROUTES
 const toThousand = require("./utils/toThousand");
-const recordameMiddleware = require("./middlewares/recordameMiddleware");
+const rememberMe = require("./middlewares/auth/remember-me");
 const authenticate = require("./middlewares/auth/authenticate");
 
 const indexRouter = require("./routes/index");
@@ -44,7 +44,7 @@ app.use(session({ secret: "esta es una clave indescifrable" }));
 app.use(cookieParser());
 app.use(express.urlencoded());
 app.use(methodOverride("_method"));
-app.use(recordameMiddleware); // TO DO mirar esto mejor
+app.use(rememberMe);
 app.use(authenticate);
 
 /// ROUTES

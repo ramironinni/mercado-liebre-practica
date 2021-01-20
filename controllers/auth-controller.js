@@ -38,19 +38,13 @@ const authController = {
 
         req.session.loggedUserId = user.id;
 
+        if (req.body.rememberMe != undefined) {
+            res.cookie("rememberMe", user.id, {
+                maxAge: 1000 * 60 * 60,
+            });
+        }
+
         return res.redirect("/");
-
-        // let motiveToLogin = req.cookies.motiveToLogin;
-
-        // switch (motiveToLogin) {
-        //     case "create":
-        //         return res.redirect("/products/create");
-        //     case "edit":
-        //         return res.redirect("/products/:id/edit");
-        //     case "":
-        //         return res.redirect("/");
-        //     default:
-        // }
     },
     register: (req, res) => {
         const users = getFromDB("usersDB");
@@ -72,32 +66,14 @@ const authController = {
     showLogin: (req, res) => {
         let message = "";
         res.render("login", { message: message });
-
-        // let redirect;
-
-        // if (req.query.redirect) {
-        //     redirect = req.query.redirect;
-        //     res.cookie("motiveToLogin", redirect, { maxAge: 10000 });
-        // }
-
-        // let message;
-
-        // switch (redirect) {
-        //     case "create":
-        //         message = "Debe ser administrador para crear un producto";
-        //         break;
-        //     case "edit":
-        //         message = "Debe ser administrador para editar un producto";
-        //         break;
-
-        //     default:
-        //         message = "";
-        //         break;
-        // }
-        // res.render("login", { message: message });
     },
     showRegister: (req, res) => {
         res.render("register");
+    },
+    logOut: (req, res) => {
+        req.session.loggedUserId = null;
+        res.cookie("rememberMe", null);
+        res.redirect("/");
     },
 };
 

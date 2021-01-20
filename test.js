@@ -1,11 +1,8 @@
-const getFromDB = require("./utils/getFromDB");
+let saludo;
+let condicion;
 
-const getOneFromDB = function (id, filenameDB) {
-    const elements = getFromDB(filenameDB);
-    const element = elements.find((element) => {
-        return element.id == id;
-    });
-    return element;
-};
+if (condicion) {
+    saludo = "hola";
+}
 
-console.log(getOneFromDB(3, "productsDataBase"));
+console.log(condicion);

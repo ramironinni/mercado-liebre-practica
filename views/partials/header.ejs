@@ -52,6 +52,13 @@
         <li>
             <a href="#">Mis compras <i class="fas fa-shopping-basket"></i></a>
         </li>
+        <li>
+            <form action="/auth/login?_method=DELETE" method="POST">
+                <button type="submit">
+                    Cerrar Sesión <i class="fas fa-external-link-alt"></i>
+                </button>
+            </form>
+        </li>
         <% } %>
     </ul>
 </nav>
